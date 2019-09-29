@@ -7,7 +7,7 @@ const MAX_DIMENSION = 16;
 
 const normal_infinity = Decimal.pow(2, Decimal.pow(2, 10));
 
-const normal_corruption_start = Decimal.pow(2, Decimal.pow(2, 12));
+const normal_corruption_start = Decimal.pow(2, Decimal.pow(2, 10));
 
 function getChallId (chall) {
   if (typeof chall !== 'string') {
@@ -658,7 +658,7 @@ function getCorruptionStart (x) {
     x = player.currentChallenge;
   }
   if (useBase12(x)) {
-    return Decimal.pow(2, Decimal.pow(2, 10));
+    return Decimal.pow(2, Decimal.pow(2, 12));
   } else {
     return normal_corruption_start;
   }
