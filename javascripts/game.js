@@ -2499,8 +2499,8 @@ function giveAchievement(name) {
     updateAchPow();
 }
 
-var TIER_NAMES = [ null, "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth" ];
-var DISPLAY_NAMES = [ null, "First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth", "Tenth", "Eleventh", "Twelfth" ];
+var TIER_NAMES = [ null, "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth", "eleventh", "twelfth", "thirteenth", "fourteenth", "fifteenth", "sixteenth" ];
+var DISPLAY_NAMES = [ null, "First", "Second", "Third", "Fourth", "Fifth", "Sixth", "Seventh", "Eighth", "Ninth", "Tenth", "Eleventh", "Twelfth", "Thirteenth", "Fourteenth", "Fifteenth", "Sixteenth" ];
 
 function canAfford(cost) {
     return ((cost.lt(player.challengeTarget) && !player.break) || player.break) && cost.lte(player.money);
@@ -5548,11 +5548,23 @@ window.onload = function() {
 }
 
 function getDimName (i) {
-  if (i <= 12) {
+  if (i <= 16) {
     return DISPLAY_NAMES[i];
-  } else {
-    // Works up to 20th.
-    return i + 'th';
+  } else { // works for every number
+    if (i % 100 >= 11 && i % 100 <= 20) {
+      return i + 'th'
+    } else {
+      switch(i % 10) {
+        case 1:
+          return i + 'st';
+        case 2:
+          return i + 'nd';
+        case 3:
+          return i + 'rd';
+        default:
+          return i + 'th';
+        }
+    }
   }
 }
 
