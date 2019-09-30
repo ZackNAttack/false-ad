@@ -2561,7 +2561,7 @@ function getDimensionPowerMultiplier(tier, cost) {
     }
 
     if (player.infinityUpgrades.includes('mulLn')) {
-      dimMult = Math.max(dimMult, lnLnInfinitied());
+      dimMult *= lnLnInfinitied();
     }
 
     if (player.infinityUpgrades.includes('multIncrease')) {
